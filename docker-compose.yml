@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  app:
+    image: "faceit-test"
+    container_name: "faceit-test"
+    build:
+      context: .
+      dockerfile: build/Dockerfile
+    volumes:
+      - ./:/go/src/faceit-test
+    ports:
+      - "8880:8880"
+
+  postgres:
+    container_name: "faceit-test-postgres"
+    image: postgres:10.20-alpine
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  rabbit:
+    container_name: "rabbitmq"
+    image: rabbitmq:3.9.14-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - '5672:5672'
+      - '15672:15672'

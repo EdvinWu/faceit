@@ -1,0 +1,16 @@
+postgres:
+  host: postgres
+  port: 5432
+  username: postgres
+  password: password
+  ssl-mode: disable
+  debug: true
+  migration-path: ./migration/
+
+rabbit:
+  username: user
+  password: password
+  host: rabbit
+
+server:
+  port: 8880
